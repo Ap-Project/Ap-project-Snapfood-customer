@@ -1,6 +1,8 @@
+import 'package:customer_app/modules/cart.dart';
+import 'package:customer_app/modules/restaurant.dart';
 import 'package:flutter/material.dart';
 import 'cart.dart';
-import 'home.dart';
+import 'homepage.dart';
 import 'orders.dart';
 
 class BottomTabs extends StatefulWidget {
@@ -17,8 +19,8 @@ class _BottomTabsState extends State<BottomTabs> {
     });
   }
   List<Widget> screenList = [
-    Cart(),
-    Home(),
+    CartScreen(),
+    HomePage(),
     Orders(),
   ];
   @override

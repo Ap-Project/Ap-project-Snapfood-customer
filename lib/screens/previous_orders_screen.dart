@@ -1,4 +1,4 @@
-import 'package:customer_app/modules/orders.dart';
+import 'package:customer_app/modules/restaurant.dart';
 import 'package:customer_app/screens/factor_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:common_codes/screens/decoration.dart';
@@ -16,7 +16,7 @@ class PreviousOrders extends StatefulWidget {
 
 class _PreviousOrdersState extends State<PreviousOrders> {
   DateTime _dateTime = DateTime.now();
-  OrdersList ordersList = new OrdersList();
+  Restaurants ordersList = new Restaurants();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class _PreviousOrdersState extends State<PreviousOrders> {
     Size size = MediaQuery.of(context).size;
 
     return ListView.builder(
-      itemCount: ordersList.ordersList.length,
+      itemCount: ordersList.restaurantList.length,
       itemBuilder: (context, int index) {
         return Padding(
           padding: const EdgeInsets.all(15.0),
@@ -38,7 +38,7 @@ class _PreviousOrdersState extends State<PreviousOrders> {
                     child: Row(
                       children: [
                         SquareDesignImageContainer(
-                            ordersList.ordersList.elementAt(index).image),
+                            ordersList.restaurantList.elementAt(index).imageAsset),
                         Spacer(),
                         Padding(
                           padding: const EdgeInsets.all(15.0),
@@ -46,7 +46,7 @@ class _PreviousOrdersState extends State<PreviousOrders> {
                             child: Column(
                               children: [
                                 Text(
-                                  ordersList.ordersList
+                                  ordersList.restaurantList
                                       .elementAt(index)
                                       .restaurantName,
                                   overflow: TextOverflow.ellipsis,
@@ -59,17 +59,17 @@ class _PreviousOrdersState extends State<PreviousOrders> {
                                   height: 10.0,
                                 ),
                                 DateAndTimeRow(
-                                    ordersList.ordersList
+                                    ordersList.restaurantList
                                         .elementAt(index)
                                         .dateTime,
-                                    ordersList.ordersList
+                                    ordersList.restaurantList
                                         .elementAt(index)
                                         .dateTime),
                                 SizedBox(
                                   height: 10.0,
                                 ),
                                 AddressAndLocation(ordersList.stopOverflow(
-                                    ordersList.ordersList
+                                    ordersList.restaurantList
                                         .elementAt(index)
                                         .restaurantAddress,
                                     size.width)),
