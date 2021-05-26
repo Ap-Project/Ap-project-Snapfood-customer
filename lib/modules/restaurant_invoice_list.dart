@@ -1,4 +1,4 @@
-import 'restaurant_food_details.dart';
+import 'package:common_codes/modules/restaurant_food_details.dart';
 
 class RestaurantInvoiceList{
   List<RestaurantFoodDetails> _restaurantInvoiceList = [

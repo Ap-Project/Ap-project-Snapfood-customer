@@ -84,8 +84,8 @@ class _FactorScreenState extends State<FactorScreen> {
                           color: buttonColor,
                           child: ListTile(
                             
-                            title: myTextStyle(text: 'Total payment',textColor: Colors.white,),
-                            trailing: myTextStyle(textColor: Colors.white,text: '275000',),
+                            title: MyTextStyle(text: 'Total payment',textColor: Colors.white,),
+                            trailing: MyTextStyle(textColor: Colors.white,text: '275000',),
                           ),
                         ),
                       ],

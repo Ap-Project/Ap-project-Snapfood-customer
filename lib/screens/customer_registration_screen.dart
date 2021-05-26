@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'bottom_tabs.dart';
 import 'package:common_codes/modules/identity_information.dart';
 import 'package:common_codes/screens/decoration.dart';
+import 'package:customer_app/screens/map.dart';
 
 
 const backgroundColor = Colors.white;
@@ -79,19 +80,26 @@ class _CustomersRegistrationScreenState extends State<CustomersRegistrationScree
                 SizedBox(
                   height: 25.0,
                 ),
-                TextFormField(
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
-                  decoration: myDecoration.TextFormFieldDecoration(
-                      'Enter your restaurant address', 'restaurant address'),
-                  onSaved: (String value) {
-                    address = value;
+                GestureDetector(
+                  onTap: (){
+                    setState(() {
+                      Navigator.pushNamed(context, Map.MapId);
+                    });
                   },
-                  validator: (value) {
-                    if (value.isEmpty || value == null)
-                      return 'please enter your restaurant address';
-                    return null;
-                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: buttonColor),
+                        borderRadius: BorderRadius.circular(3.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text("Address",
+                          style: TextStyle(
+                            color: Colors.grey[700],
+                          ),
+                        ),
+                      )
+                  ),
                 ),
                 SizedBox(
                   height: 25.0,

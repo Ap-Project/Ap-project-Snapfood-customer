@@ -1,10 +1,10 @@
 import 'package:customer_app/modules/cart.dart';
-import 'package:customer_app/screens/cart.dart';
+import 'package:customer_app/modules/customer_registration.dart';
+import 'package:customer_app/modules/registered_customers.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_app/modules/restaurant.dart';
 import 'package:customer_app/screens/restaurant_screen.dart';
 import 'package:customer_app/widgets/rating_stars.dart';
-import 'package:common_codes/screens/decoration.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -12,7 +12,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  static List<Restaurant> addingRestaurant = [];
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -28,11 +28,17 @@ class _HomeState extends State<Home> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => RestaurantScreen(restaurant: restaurants.restaurantList.elementAt(index)),
+                      builder: (_) => RestaurantScreen(restaurant: restaurants.restaurantList.elementAt(index),whichRestaurant: index,),
                     ));
-                if(!(addingRestaurant.contains(restaurants.restaurantList.elementAt(index)))){
-                  print(Cart.restaurants.contains(restaurants.restaurantList.elementAt(index)));
-                  Cart.restaurants.add(restaurants.restaurantList.elementAt(index));
+                bool flag = true;
+                for(int i = 0 ; i < RegisteredCustomersList.registeredList.elementAt(0).cart.length;i++){
+                  if(RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(i).restaurantName == restaurants.restaurantList.elementAt(index).restaurantName) {
+                    flag = false;
+                    break;
+                  }
+                }
+                if(flag){
+                  RegisteredCustomersList.registeredList.elementAt(0).cart.add(restaurants.restaurantList.elementAt(index));
                 }
               });
             },

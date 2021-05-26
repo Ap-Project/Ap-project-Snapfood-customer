@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:customer_app/animation/ScaleRoute.dart';
-import 'package:customer_app/pages/FoodDetailsPage.dart';
+import 'package:customer_app/pages/food_details_page.dart';
 
 class PopularRestaurantsWidget extends StatefulWidget {
   @override

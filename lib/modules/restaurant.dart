@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'foods.dart';
+import 'package:common_codes/modules/foods.dart';
 
 class Restaurant{
   String _imageAsset;

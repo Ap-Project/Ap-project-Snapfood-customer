@@ -4,6 +4,7 @@ import 'package:customer_app/screens/customer_registration_screen.dart';
 import 'package:customer_app/screens/factor_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:common_codes/screens/welcome_screen.dart';
+import 'package:customer_app/screens/map.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         CustomersRegistrationScreen.customersRegistrationId : (context) => CustomersRegistrationScreen(),
         LoginScreen.loginScreenId : (context) => LoginScreen(),
         FactorScreen.factorScreenId : (context) => FactorScreen(),
+        Map.MapId : (context) => Map(),
       },
       theme: ThemeData(
         primaryColor: const Color(0XFFd83e56),

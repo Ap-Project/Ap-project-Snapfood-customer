@@ -1,5 +1,6 @@
 import 'package:customer_app/modules/cart.dart';
 import 'package:customer_app/modules/restaurant.dart';
+import 'package:customer_app/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'cart.dart';
 import 'homepage.dart';
@@ -22,12 +23,15 @@ class _BottomTabsState extends State<BottomTabs> {
     CartScreen(),
     HomePage(),
     Orders(),
+    ProfilePage(),
+
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: screenList[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
             icon: Icon(
@@ -42,6 +46,10 @@ class _BottomTabsState extends State<BottomTabs> {
           BottomNavigationBarItem(
             icon: Icon(Icons.border_color),
             title: Text('Orders'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle_rounded),
+            title: Text('Profile'),
           ),
         ],
         currentIndex: _selectedIndex,

@@ -1,10 +1,5 @@
 import 'package:customer_app/modules/restaurant.dart';
-import 'restaurant_food_details.dart';
-
-class Cart{
-  static List<Restaurant> restaurants = [];
-
-}
+import 'package:common_codes/modules/restaurant_food_details.dart';
 
 class CartAddingFood{
   static List<RestaurantFoodDetails> cartAddingFood = List.empty(growable: true);
@@ -14,9 +9,7 @@ class CartAddingFood{
   }
 
   static void changePrice(int index){
-    cartAddingFood[index].priceOfFood++;
+    cartAddingFood[index].priceOfFood *= cartAddingFood[index].numberOfFood;
   }
-
-
 
 }

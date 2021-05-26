@@ -1,14 +1,16 @@
 import 'package:customer_app/modules/cart.dart';
-import 'package:customer_app/modules/restaurant_food_details.dart';
+import 'package:common_codes/modules/restaurant_food_details.dart';
+import 'package:customer_app/modules/registered_customers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:customer_app/modules/foods.dart';
+import 'package:common_codes/modules/foods.dart';
 import 'package:customer_app/modules/restaurant.dart';
 import 'package:customer_app/widgets/rating_stars.dart';
 
 class RestaurantScreen extends StatefulWidget {
   final Restaurant restaurant;
-  RestaurantScreen({this.restaurant});
+  final int whichRestaurant;
+  RestaurantScreen({this.restaurant,this.whichRestaurant});
   @override
   _RestaurantScreenState createState() => _RestaurantScreenState();
 }
@@ -218,8 +220,8 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                 onPressed: () {
                   setState(() {
                     // if(CartAddingFood.cartAddingFood.elementAt(index).numberOfFood == 0){
-                      CartAddingFood.cartAddingFood.add(new RestaurantFoodDetails(food.name, 1, food.price));
-                    // }else{
+                    //   RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(widget.whichRestaurant).chosenFood.add(food);
+                    // // }else{
                     //   CartAddingFood.addNumber(index);
                     // }
                   });

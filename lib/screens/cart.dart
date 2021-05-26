@@ -1,4 +1,6 @@
 import 'package:customer_app/modules/cart.dart';
+import 'package:customer_app/modules/customer_registration.dart';
+import 'package:customer_app/modules/registered_customers.dart';
 import 'package:customer_app/modules/restaurant.dart';
 import 'package:flutter/material.dart';
 import 'package:common_codes/screens/decoration.dart';
@@ -10,8 +12,6 @@ import 'package:common_codes/screens/address_and_location_icon_row.dart';
 const buttonColor = const Color(0XFFd83e56);
 
 class CartScreen extends StatefulWidget {
-  final List<Restaurant> addingRestaurant;
-  CartScreen({this.addingRestaurant});
 
   @override
   _CartScreenState createState() => _CartScreenState();
@@ -28,7 +28,7 @@ class _CartScreenState extends State<CartScreen> {
         title: Text('Cart'),
       ),
       body: ListView.builder(
-        itemCount: Cart.restaurants.length,
+        itemCount: RegisteredCustomersList.registeredList.elementAt(0).cart.length,
         itemBuilder: (context, int index) {
           return Padding(
             padding: const EdgeInsets.all(15.0),
@@ -42,7 +42,7 @@ class _CartScreenState extends State<CartScreen> {
                       child: Row(
                         children: [
                           SquareDesignImageContainer(
-                              Cart.restaurants.elementAt(index).imageAsset),
+                              RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(index).imageAsset),
                           Spacer(),
                           Padding(
                             padding: const EdgeInsets.all(15.0),
@@ -50,8 +50,7 @@ class _CartScreenState extends State<CartScreen> {
                               child: Column(
                                 children: [
                                   Text(
-                                    Cart.restaurants
-                                        .elementAt(index)
+                              RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(index)
                                         .restaurantName,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
@@ -63,18 +62,15 @@ class _CartScreenState extends State<CartScreen> {
                                     height: 10.0,
                                   ),
                                   DateAndTimeRow(
-                                      Cart.restaurants
-                                          .elementAt(index)
+                                    RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(index)
                                           .dateTime,
-                                      Cart.restaurants
-                                          .elementAt(index)
+                                      RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(index)
                                           .dateTime),
                                   SizedBox(
                                     height: 10.0,
                                   ),
                                   AddressAndLocation(ordersList.stopOverflow(
-                                      Cart.restaurants
-                                          .elementAt(index)
+                                      RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(index)
                                           .restaurantAddress,
                                       size.width)),
                                 ],
@@ -85,21 +81,20 @@ class _CartScreenState extends State<CartScreen> {
                         ],
                       ),
                     ),
-                    ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: CartAddingFood.cartAddingFood.length,
-                        itemBuilder: (context, index) {
-                          return ListTile(
-                            leading: Text(CartAddingFood.cartAddingFood
-                                .elementAt(index)
-                                .foodName),
-                            title: Text(
-                                '(${CartAddingFood.cartAddingFood.elementAt(index).numberOfFood})'),
-                            trailing: Text(
-                                '${CartAddingFood.cartAddingFood.elementAt(index).priceOfFood}'),
-                          );
-                        }),
+                    // ListView.builder(
+                    //     physics: NeverScrollableScrollPhysics(),
+                    //     shrinkWrap: true,
+                    //     itemCount: RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(index).chosenFood.length,
+                    //     itemBuilder: (context, index) {
+                    //       return ListTile(
+                    //         leading: Text(RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(index).chosenFood.elementAt(index)
+                    //             .name),
+                    //         title: Text(
+                    //             '(${CartAddingFood.cartAddingFood.elementAt(index).numberOfFood})'),
+                    //         trailing: Text(
+                    //             '${CartAddingFood.cartAddingFood.elementAt(index).priceOfFood}'),
+                    //       );
+                    //     }),
                     Container(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -121,8 +116,8 @@ class _CartScreenState extends State<CartScreen> {
                             child: ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  Cart.restaurants.remove(
-                                      Cart.restaurants.elementAt(index));
+                                  RegisteredCustomersList.registeredList.elementAt(0).cart.remove(
+                                      RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(index));
                                 });
                               },
                               child: Text('Remove Cart'),
