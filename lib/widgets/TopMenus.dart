@@ -13,14 +13,14 @@ class _TopMenusState extends State<TopMenus> {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
-          TopMenuTiles(name: "Burger", imageUrl: "ic_burger", slug: ""),
-          TopMenuTiles(name: "Sushi", imageUrl: "ic_sushi", slug: ""),
-          TopMenuTiles(name: "Pizza", imageUrl: "ic_pizza", slug: ""),
-          TopMenuTiles(name: "Cake", imageUrl: "ic_cake", slug: ""),
-          TopMenuTiles(name: "Ice Cream", imageUrl: "ic_ice_cream", slug: ""),
-          TopMenuTiles(name: "Soft Drink", imageUrl: "ic_soft_drink", slug: ""),
-          TopMenuTiles(name: "Burger", imageUrl: "ic_burger", slug: ""),
-          TopMenuTiles(name: "Sushi", imageUrl: "ic_sushi", slug: ""),
+          TopMenuTiles(name: "Burger", imageUrl: "photo_2021-06-03_10-31-40", slug: ""),
+          TopMenuTiles(name: "Sushi", imageUrl: "photo_2021-06-03_10-33-11", slug: ""),
+          TopMenuTiles(name: "Pizza", imageUrl: "photo_2021-06-03_10-33-04", slug: ""),
+          TopMenuTiles(name: "Cake", imageUrl: "photo_2021-06-03_10-32-51", slug: ""),
+          TopMenuTiles(name: "Ice Cream", imageUrl: "photo_2021-06-03_10-32-56", slug: ""),
+          TopMenuTiles(name: "Soft Drink", imageUrl: "photo_2021-06-03_10-33-07", slug: ""),
+          TopMenuTiles(name: "Burger", imageUrl: "photo_2021-06-03_10-31-40", slug: ""),
+          TopMenuTiles(name: "Sushi", imageUrl: "photo_2021-06-03_10-33-11", slug: ""),
         ],
       ),
     );
@@ -67,7 +67,7 @@ class TopMenuTiles extends StatelessWidget {
                   height: 50,
                   child: Center(
                       child: Image.asset(
-                        'assets/images/topmenu/' + imageUrl + ".png",
+                        'assets/images/' + imageUrl + ".jpg",
                         width: 24,
                         height: 24,
                       )),

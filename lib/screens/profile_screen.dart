@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:customer_app/screens/bottom_sheet.dart';
 import 'package:customer_app/screens/increase_credit.dart';
 
+const buttonColor = const Color(0XFFd83e56);
+
 class ProfilePage extends StatefulWidget {
+  static String profileId = '/ProfileId';
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -12,12 +14,12 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // bottomNavigationBar: followButton(),
+      appBar: AppBar(),
       body: Stack(
         children: <Widget>[
           ClipPath(
             child: Container(
-              color: Colors.orangeAccent.withOpacity(0.8),
+              color: buttonColor.withOpacity(0.8),
             ),
             clipper: GetClipper(),
           ),
@@ -41,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 5.0,
-                            color: Colors.orange,
+                            color: buttonColor,
                             offset: Offset(5.0, 6.0),
                           ),
                         ],
@@ -89,7 +91,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Icon(
                         Icons.person_pin,
                         size: 18.0,
-                        color: Colors.orangeAccent,
+                        color: Colors.pinkAccent,
                       ),
                     ),
                   ],
@@ -118,7 +120,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Icon(
                         Icons.wallet_membership,
                         size: 18.0,
-                        color: Colors.orangeAccent,
+                        color: Colors.pinkAccent,
                       ),
                       onTap: () {
                         showModalBottomSheet(
@@ -130,7 +132,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 Divider(
                   height: 30.0,
-                  color: Colors.orangeAccent,
+                  color: Colors.pinkAccent,
                 ),
                 Container(
                   width: 350.0,
@@ -163,7 +165,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       VerticalDivider(
                         width: 70.0,
-                        color: Colors.orange,
+                        color: buttonColor,
                       ),
                       Column(
                         children: <Widget>[
@@ -193,10 +195,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 Divider(
                   height: 20.0,
-                  color: Colors.orange,
+                  color: buttonColor,
                 ),
                 Container(
-                  color: Colors.orangeAccent,
+                  color: buttonColor,
                   width: MediaQuery.of(context).size.width,
                   height: 130.0,
                   child: SingleChildScrollView(
@@ -216,7 +218,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   style: TextStyle(
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.orange,
+                                    color: buttonColor,
                                   ),
                                 ),
                                 SizedBox(
@@ -250,7 +252,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   style: TextStyle(
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.orange,
+                                    color: buttonColor,
                                   ),
                                 ),
                                 SizedBox(

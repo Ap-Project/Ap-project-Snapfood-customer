@@ -1,4 +1,7 @@
+import 'package:customer_app/modules/registered_customers.dart';
 import 'package:flutter/material.dart';
+
+const buttonColor = const Color(0XFFd83e56);
 
 class increaseCredit extends StatefulWidget {
   @override
@@ -6,6 +9,7 @@ class increaseCredit extends StatefulWidget {
 }
 
 class _increaseCreditState extends State<increaseCredit> {
+  int number = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,12 +20,12 @@ class _increaseCreditState extends State<increaseCredit> {
         children: <Widget>[
           Text(
             "Increase Credit",
-            style: TextStyle(fontSize: 20.0, color: Colors.orangeAccent),
+            style: TextStyle(fontSize: 20.0, color:buttonColor),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child: Card(
-              color: Colors.orange[200],
+              color: Colors.pinkAccent[100],
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 10.0, vertical: 10.0),
@@ -41,24 +45,35 @@ class _increaseCreditState extends State<increaseCredit> {
                           InkWell(
                             child: Icon(
                               Icons.keyboard_arrow_up,
-                              color: Colors.orange,
+                              color: buttonColor,
                             ),
-                            onTap: () {},
+                            onTap: () {
+                              setState(() {
+                                RegisteredCustomersList.registeredList.elementAt(0).credit +=  20;
+                                number += 20;
+                              });
+                            },
                             splashColor: Colors.black45,
                           ),
                           Text(
-                            "0", //index
+                            "${number}", //index
                             style: TextStyle(
                               fontSize: 18.0,
-                              color: Color(0xFFD3D3D3),
+                              color: Colors.grey,
                             ),
                           ),
                           InkWell(
                             child: Icon(
                               Icons.keyboard_arrow_down,
-                              color: Colors.orange,
+                              color: Colors.pinkAccent,
                             ),
-                            onTap: () {},
+                            onTap: () {
+                              setState(() {
+                                RegisteredCustomersList.registeredList.elementAt(0).credit -=  20;
+                                number -= 20;
+                              });
+
+                            },
                             splashColor: Colors.black45,
                           ),
                         ],
@@ -85,14 +100,6 @@ class _increaseCreditState extends State<increaseCredit> {
                         ),
                       ],
                     ),
-                    // Spacer(),
-                    GestureDetector(
-                      child: Icon(
-                        Icons.cancel,
-                        color: Colors.red,
-                      ),
-                      onTap: () {},
-                    )
                   ],
                 ),
               ),

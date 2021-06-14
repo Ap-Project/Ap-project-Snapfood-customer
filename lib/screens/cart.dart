@@ -1,18 +1,19 @@
-import 'package:customer_app/modules/cart.dart';
 import 'package:customer_app/modules/customer_registration.dart';
 import 'package:customer_app/modules/registered_customers.dart';
 import 'package:customer_app/modules/restaurant.dart';
+import 'package:customer_app/screens/profile_screen.dart';
+import 'package:customer_app/screens/restaurant_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:common_codes/screens/decoration.dart';
 import 'package:common_codes/screens/square_image_design.dart';
 import 'package:common_codes/screens/date_and_time_row.dart';
 import 'package:common_codes/screens/address_and_location_icon_row.dart';
-
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 const buttonColor = const Color(0XFFd83e56);
 
 class CartScreen extends StatefulWidget {
-
   @override
   _CartScreenState createState() => _CartScreenState();
 }
@@ -26,9 +27,19 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Cart'),
+        actions: [
+          Icon(Icons.wallet_membership_outlined),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 18.0, horizontal: 10.0),
+            child: Text(
+                '${RegisteredCustomersList.registeredList.elementAt(0).credit}'),
+          ),
+        ],
       ),
       body: ListView.builder(
-        itemCount: RegisteredCustomersList.registeredList.elementAt(0).cart.length,
+        itemCount:
+            RegisteredCustomersList.registeredList.elementAt(0).cart.length,
         itemBuilder: (context, int index) {
           return Padding(
             padding: const EdgeInsets.all(15.0),
@@ -41,8 +52,12 @@ class _CartScreenState extends State<CartScreen> {
                     Container(
                       child: Row(
                         children: [
-                          SquareDesignImageContainer(
-                              RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(index).imageAsset),
+                          SquareDesignImageContainer(RegisteredCustomersList
+                              .registeredList
+                              .elementAt(0)
+                              .cart
+                              .elementAt(index)
+                              .imageAsset),
                           Spacer(),
                           Padding(
                             padding: const EdgeInsets.all(15.0),
@@ -50,7 +65,10 @@ class _CartScreenState extends State<CartScreen> {
                               child: Column(
                                 children: [
                                   Text(
-                              RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(index)
+                                    RegisteredCustomersList.registeredList
+                                        .elementAt(0)
+                                        .cart
+                                        .elementAt(index)
                                         .restaurantName,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
@@ -62,15 +80,24 @@ class _CartScreenState extends State<CartScreen> {
                                     height: 10.0,
                                   ),
                                   DateAndTimeRow(
-                                    RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(index)
+                                      RegisteredCustomersList.registeredList
+                                          .elementAt(0)
+                                          .cart
+                                          .elementAt(index)
                                           .dateTime,
-                                      RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(index)
+                                      RegisteredCustomersList.registeredList
+                                          .elementAt(0)
+                                          .cart
+                                          .elementAt(index)
                                           .dateTime),
                                   SizedBox(
                                     height: 10.0,
                                   ),
                                   AddressAndLocation(ordersList.stopOverflow(
-                                      RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(index)
+                                      RegisteredCustomersList.registeredList
+                                          .elementAt(0)
+                                          .cart
+                                          .elementAt(index)
                                           .restaurantAddress,
                                       size.width)),
                                 ],
@@ -81,27 +108,76 @@ class _CartScreenState extends State<CartScreen> {
                         ],
                       ),
                     ),
-                    // ListView.builder(
-                    //     physics: NeverScrollableScrollPhysics(),
-                    //     shrinkWrap: true,
-                    //     itemCount: RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(index).chosenFood.length,
-                    //     itemBuilder: (context, index) {
-                    //       return ListTile(
-                    //         leading: Text(RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(index).chosenFood.elementAt(index)
-                    //             .name),
-                    //         title: Text(
-                    //             '(${CartAddingFood.cartAddingFood.elementAt(index).numberOfFood})'),
-                    //         trailing: Text(
-                    //             '${CartAddingFood.cartAddingFood.elementAt(index).priceOfFood}'),
-                    //       );
-                    //     }),
+                    ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: RegisteredCustomersList.registeredList
+                            .elementAt(0)
+                            .cart
+                            .elementAt(RestaurantScreen.saveRestaurant)
+                            .cartAddingFood
+                            .length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            leading: Text(RegisteredCustomersList.registeredList
+                                .elementAt(0)
+                                .cart
+                                .elementAt(RestaurantScreen.saveRestaurant)
+                                .cartAddingFood
+                                .elementAt(index)
+                                .foodName),
+                            title: Text(
+                                '(${RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(RestaurantScreen.saveRestaurant).cartAddingFood.elementAt(index).numberOfFood})'),
+                            trailing: Text(
+                                '${RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(RestaurantScreen.saveRestaurant).cartAddingFood.elementAt(index).priceOfFood}'),
+                          );
+                        }),
+                    ListTile(
+                      title: Text("total",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      trailing:  Text(
+                          '(${RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(RestaurantScreen.saveRestaurant).total()})',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
                     Container(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded(
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  if(RegisteredCustomersList.registeredList.elementAt(0).credit < RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(RestaurantScreen.saveRestaurant).total()){
+                                    Alert(
+                                      context: context,
+                                      title: 'Couldn\'t purchase',
+                                      type: AlertType.info,
+                                      desc: "You don\'t have enough credit",
+                                      style: myDecoration.myAlertStyle(),
+                                      buttons: [
+                                        DialogButton(
+                                            color: buttonColor,
+                                            child: Text(
+                                              'Increase credit',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 25,
+                                              ),
+                                            ),
+                                            onPressed: () => Navigator.pushNamed(context, ProfilePage.profileId)),
+                                      ],
+                                    ).show();
+                                  }
+                                  else{
+                                    RegisteredCustomersList.registeredList.elementAt(0).credit -= RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(RestaurantScreen.saveRestaurant).total();
+                                  }
+
+                                });
+
+                              },
                               child: Text('Continue shopping'),
                               style: ButtonStyle(
                                 backgroundColor: MaterialStateColor.resolveWith(
@@ -116,8 +192,14 @@ class _CartScreenState extends State<CartScreen> {
                             child: ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  RegisteredCustomersList.registeredList.elementAt(0).cart.remove(
-                                      RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(index));
+                                  RegisteredCustomersList.registeredList
+                                      .elementAt(0)
+                                      .cart
+                                      .remove(RegisteredCustomersList
+                                          .registeredList
+                                          .elementAt(0)
+                                          .cart
+                                          .elementAt(index));
                                 });
                               },
                               child: Text('Remove Cart'),

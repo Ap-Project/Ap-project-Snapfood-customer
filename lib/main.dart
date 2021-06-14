@@ -2,6 +2,7 @@ import 'package:customer_app/screens/bottom_tabs.dart';
 import 'package:customer_app/screens/customer_login_screen.dart';
 import 'package:customer_app/screens/customer_registration_screen.dart';
 import 'package:customer_app/screens/factor_screen.dart';
+import 'package:customer_app/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:common_codes/screens/welcome_screen.dart';
 import 'package:customer_app/screens/map.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         LoginScreen.loginScreenId : (context) => LoginScreen(),
         FactorScreen.factorScreenId : (context) => FactorScreen(),
         Map.MapId : (context) => Map(),
+        ProfilePage.profileId : (context) => ProfilePage(),
       },
       theme: ThemeData(
         primaryColor: const Color(0XFFd83e56),

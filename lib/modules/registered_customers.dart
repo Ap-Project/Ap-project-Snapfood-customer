@@ -3,7 +3,7 @@ import 'customer_registration.dart';
 class RegisteredCustomersList {
 
   static List<CustomersRegistration> registeredList = [
-    CustomersRegistration("Ghazaal", "Laghaee", [], "Ghazal1234", "09129494168",100000,[],[]),
+    CustomersRegistration("Ghazaal", "Laghaee", [], "Ghazal1234", "09129494168",100000,[]),
   ];
 
 

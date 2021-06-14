@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:customer_app/pages/food_details_page.dart';
+
 
 class PopularRestaurantsWidget extends StatefulWidget {
   @override
@@ -105,9 +105,9 @@ class PopularRestaurantTiles extends StatelessWidget {
                             alignment: Alignment.centerLeft,
                             child: Center(
                                 child: Image.asset(
-                                  'assets/images/popular_foods/' +
+                                  'assets/images/' +
                                       imageUrl +
-                                      ".png",
+                                      ".jpg",
                                   width: 130,
                                   height: 140,
                                 )),
@@ -259,25 +259,25 @@ class PopularRestaurantItems extends StatelessWidget {
       children: <Widget>[
         PopularRestaurantTiles(
             name: "Restaurant1",
-            imageUrl: "ic_popular_food_1",
+            imageUrl: "photo_2021-06-03_10-50-03",
             rating: '4.9',
             numberOfRating: '200',
             slug: "fried_egg"),
         PopularRestaurantTiles(
             name: "Restaurant2",
-            imageUrl: "ic_popular_food_3",
+            imageUrl: "photo_2021-06-03_10-50-08",
             rating: "4.8",
             numberOfRating: "100",
             slug: ""),
         PopularRestaurantTiles(
             name: "Restaurant3",
-            imageUrl: "ic_popular_food_4",
+            imageUrl: "photo_2021-06-03_10-50-33",
             rating: "4.0",
             numberOfRating: "50",
             slug: ""),
         PopularRestaurantTiles(
             name: "Restaurant3",
-            imageUrl: "ic_popular_food_5",
+            imageUrl: "photo_2021-06-03_10-50-14",
             rating: "4.00",
             numberOfRating: "100",
             slug: ""),

@@ -118,13 +118,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     minWidth: 200.0,
                     height: 42.0,
                     onPressed: () {
-                      // if (_formKey.currentState.validate()) {
-                      //   setState(() {
-                      //     _formKey.currentState.save();
-                      //   });
+                      if (_formKey.currentState.validate()) {
+                        setState(() {
+                          _formKey.currentState.save();
+                        });
                         Navigator.pushNamed(
                             context, BottomTabs.bottomTabsId);
-                      // }
+                      }
                     },
                   ),
                 ),

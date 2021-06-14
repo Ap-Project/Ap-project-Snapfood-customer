@@ -29,7 +29,7 @@ class SearchWidget extends StatelessWidget {
             color: Colors.greenAccent,
             fontSize: 20,
           ),
-          hintText: "What would your like to buy?",
+          hintText: "What would you like to buy?",
         ),
         cursorColor: Colors.purple,
       ),

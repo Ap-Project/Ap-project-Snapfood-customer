@@ -1,4 +1,4 @@
-import 'package:customer_app/modules/cart.dart';
+
 import 'package:customer_app/modules/restaurant.dart';
 import 'package:customer_app/screens/profile_screen.dart';
 import 'package:flutter/material.dart';

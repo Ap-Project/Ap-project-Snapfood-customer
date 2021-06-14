@@ -1,5 +1,3 @@
-import 'package:customer_app/modules/cart.dart';
-import 'package:customer_app/modules/customer_registration.dart';
 import 'package:customer_app/modules/registered_customers.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_app/modules/restaurant.dart';
@@ -38,7 +36,7 @@ class _HomeState extends State<Home> {
                   }
                 }
                 if(flag){
-                  RegisteredCustomersList.registeredList.elementAt(0).cart.add(restaurants.restaurantList.elementAt(index));
+                  RegisteredCustomersList.registeredList.elementAt(0).cart.insert(index,restaurants.restaurantList.elementAt(index));
                 }
               });
             },

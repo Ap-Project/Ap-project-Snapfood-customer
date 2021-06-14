@@ -1,7 +1,6 @@
+import 'package:customer_app/modules/registered_customers.dart';
 import 'package:flutter/material.dart';
 import 'package:customer_app/screens/home.dart';
-import 'package:customer_app/widgets/BottomNavBarWidget.dart';
-import 'package:customer_app/widgets/NearestRestaurantWidget.dart';
 import 'package:customer_app/widgets/PopularRestaurantWidget.dart';
 import 'package:customer_app/widgets/SearchWidget.dart';
 import 'package:customer_app/widgets/TopMenus.dart';
@@ -16,16 +15,21 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Color(0xFFFAFAFA),
         elevation: 0,
         title: Text(
-          "Foods",
+          "Homepage",
           style: TextStyle(
-              color: Colors.purple,
+              color: Colors.white,
               fontSize: 16,
               fontWeight: FontWeight.bold),
         ),
+        actions: [
+          Icon(Icons.wallet_membership_outlined),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 18.0,horizontal: 10.0),
+            child: Text('${RegisteredCustomersList.registeredList.elementAt(0).credit}'),
+          ),
+        ],
         //brightness: Brightness.light,
       ),
       body: SingleChildScrollView(

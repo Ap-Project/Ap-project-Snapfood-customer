@@ -1,4 +1,3 @@
-import 'package:customer_app/modules/cart.dart';
 import 'package:common_codes/modules/restaurant_food_details.dart';
 import 'package:customer_app/modules/registered_customers.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,6 +9,7 @@ import 'package:customer_app/widgets/rating_stars.dart';
 class RestaurantScreen extends StatefulWidget {
   final Restaurant restaurant;
   final int whichRestaurant;
+  static int saveRestaurant;
   RestaurantScreen({this.restaurant,this.whichRestaurant});
   @override
   _RestaurantScreenState createState() => _RestaurantScreenState();
@@ -18,6 +18,7 @@ class RestaurantScreen extends StatefulWidget {
 class _RestaurantScreenState extends State<RestaurantScreen> {
   @override
   Widget build(BuildContext context) {
+    RestaurantScreen.saveRestaurant = widget.whichRestaurant;
     return Scaffold(
       body: Column(
         children: [
@@ -219,11 +220,21 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                 icon: Icon(Icons.add),
                 onPressed: () {
                   setState(() {
-                    // if(CartAddingFood.cartAddingFood.elementAt(index).numberOfFood == 0){
-                    //   RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(widget.whichRestaurant).chosenFood.add(food);
-                    // // }else{
-                    //   CartAddingFood.addNumber(index);
-                    // }
+                    bool flag = true;
+                    print(widget.whichRestaurant);
+                    for(int i = 0 ; i < RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(widget.whichRestaurant).cartAddingFood.length;i++){
+                      if(RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(widget.whichRestaurant).cartAddingFood[i].foodName == food.name) {
+                        flag = false;
+                        break;
+                      }
+                    }
+                    if(flag){
+                      RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(widget.whichRestaurant).cartAddingFood.add(RestaurantFoodDetails(food.name, 1, food.price));
+                    }
+                    else{
+                      RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(widget.whichRestaurant).addNumber(index);
+                      RegisteredCustomersList.registeredList.elementAt(0).cart.elementAt(widget.whichRestaurant).changePrice(index);
+                    }
                   });
                 },
               ),
